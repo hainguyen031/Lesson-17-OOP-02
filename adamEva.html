@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Apple(weight) {
+            this.weight = weight;
+
+            this.getWeight = function() {
+                return this.weight;
+            };
+
+            this.setWeight = function(weight) {
+                return this.weight = weight;
+            };
+
+            this.isEmpty = function() {
+                if(this.weight <= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            this.decrease = function() {
+                if(this.isEmpty()) {
+                    alert('Het tao')
+                } else {
+                    this.weight--;
+                }
+            };
+        }
+
+        function Human(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+
+            this.getName = function() {
+                return this.name;
+            };
+
+            this.setName = function(name) {
+                return this.name = name;
+            };
+
+            this.getWeight = function() {
+                return this.weight;
+            };
+
+            this.setWeight = function(weight) {
+                return this.weight = weight;
+            };
+
+            this.isMale = function(gender) {
+                if(this.gender == 'Male' || this.gender == 'male' || this.gender == 'm' || this.gender == 'M') {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            this.getGender = function() {
+                if(isMale()) {
+                    return 'Male';
+                } else {
+                    return 'Female';
+                }
+            }
+
+            this.checkApple = function(apple) {
+                return apple.isEmpty();
+            };
+
+            this.eat = function(apple) {
+                if(apple.getWeight() > 0) {
+                    apple.decrease();
+                    this.weight++
+                } else {
+                    alert('Het tao');
+                }
+            };
+
+            this.say = function(string) {
+                console.log(string);
+            };
+
+
+        }
+
+        let adam = new Human('Adame' , 'male', 65);
+        let eva = new Human('Eva', 'female', 45);
+        let apple = new Apple(12);
+        console.log(apple.getWeight());
+
+        adam.say('Hello');
+        eva.say('Hi Adam');
+
+        while (apple.isEmpty() !== true) {
+        document.write("Adam ăn táo" + "<br>");
+        adam.eat(apple);
+
+        document.write("Quả táo còn: " + "<br>");
+        document.write(apple.getWeight() + " đơn vị" + "<br>");
+        document.write( "Cân nặng của Adm là: " + adam.getWeight() + " đơn vị" + "<br>");
+
+        document.write("<br>")
+        
+        document.write("Eva ăn táo" + "<br>");
+        eva.eat(apple);
+
+        document.write("Quả táo còn: " + "<br>");
+        document.write(apple.getWeight() + " đơn vị" + "<br>");
+        document.write( "Cân nặng là: " + eva.getWeight() + " đơn vị" + "<br>");
+}
+    </script>
+</body>
+</html>
