@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="game"></div>
+    <script>
+  
+        function Hero(image, top, left, size, speed){
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.speed = speed;
+
+        this.getHeroElement = function(){
+            return '<img width="'+ this.size + '"' +
+            ' height="'+ this.size + '"' +
+            ' src="' + this.image +'"' +
+            ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+        }
+
+        this.moveRight = function(){
+            this.left += this.speed;
+            console.log('ok right: ' + this.left);
+        }
+        this.moveDown = function(){
+            this.top += this.speed;
+            console.log('ok down: ' + this.top);
+        }
+        this.moveLeft = function(){
+            this.left -= this.speed;
+            console.log('ok left: ' + this.left);
+        }
+        this.moveUp = function(){
+            this.top -= this.speed;
+            console.log('ok up: ' + this.top);
+        }
+
+        }
+
+        var hero = new Hero('https://e7.pngegg.com/pngimages/558/177/png-clipart-doraemon-cartoon-drawing-caricature-doraemon.png', 20, 30, 200, 50);
+
+        function start() {
+        if (hero.left < window.innerWidth - hero.size && hero.top <= 0) {
+            hero.moveRight();
+        } else if (hero.left >= window.innerWidth - hero.size && hero.top < window.innerHeight - hero.size) {
+            hero.moveDown();
+        } else if (hero.left > 0 && hero.top >= window.innerHeight - hero.size) {
+            hero.moveLeft();
+        } else if (hero.left <= 0 && hero.top > 0) {
+            hero.moveUp();
+        } else {
+            hero.moveRight();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 100);
+        }
+        start();
+
+    </script>
+
+</body>
+</html>
