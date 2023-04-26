@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Rat = function(name, weight, speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed_mouse = speed;
+            this.status_mouse;
+
+            this.getStatus = function() {
+              if(this.status_mouse) {
+                alert('Chuột còn sống')
+              } else {
+                alert('Chuột chết');
+              }
+            };
+
+            this.die = function() {
+                return this.status_mouse = false;
+            };
+
+            this.noDie = function() {
+                 this.status_mouse = true;
+            };
+
+            this.actionMouse = function(sound) {
+                this.sound_mouse = sound;
+                alert(this.sound_mouse);
+            };
+        };
+
+        let Cat = function(name, weight, speed, rat) {
+            this.name = name;
+            this.weight_cat = weight;
+            this.speed_cat = speed;
+            this.rat = rat;
+
+            this.getWeight_cat = function() {
+                return this.weight_cat;
+            };
+
+            this.actionCat = function(sound) {
+                this.sound_cat = sound;
+            };
+
+            this.catchMouse = function() {
+                if(this.speed_cat > this.rat.speed_mouse) {
+                    alert('Mèo đã bắt được chuột');
+                } else {
+                    alert('Chuột chạy nhanh quá, thoát rồi');
+                }
+            };
+
+            this.eatMouse = function() {
+                if(this.rat.status_mouse) {
+                    this.weight_cat = this.weight_cat + this.rat.weight;
+                    this.rat.status = false;
+                    alert('Chuột đã bị mèo ăn');
+                }
+            };
+        };
+
+
+
+        let ratt = new Rat('jerry', 2, 10);
+        let cat = new Cat('tom', 10, 30, ratt);
+        ratt.noDie();
+        ratt.getStatus();
+        ratt.actionMouse('chits chits chits');
+
+        cat.catchMouse();
+        cat.eatMouse();
+        alert(cat.getWeight_cat()) ;
+    </script>
+</body>
+</html>
