@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Remote(id,tv) {
+            this.id = id;
+            this.tv = tv;
+
+            this.changeChannel = function(channel) {
+                return this.tv.channel = channel;
+            };
+
+            this.changeVolume = function(volume) {
+                return this.tv.volume = volume;
+            };
+        };
+
+        function Tivi(channel, volume) {
+            this.channel = channel;
+            this.volume = volume;
+
+            this.getChannel = function() {
+                return this.channel;
+            };
+
+            this.getVolume = function() {
+                return this.volume;
+            };
+
+            this.turnOn = function() {
+                return this.status = true;
+            };
+
+            this.turnOff = function() {
+                return this.status = false;
+            };
+
+            this.checkTV = function() {
+                if(this.status) {
+                    alert('TV đang bật');
+                } else {
+                    alert('TV tắt');
+                }
+            };
+            
+            this.setChannel = function(channel) {
+                return this.channel = channel;
+            };
+
+            this.setVolume = function(volume) {
+                return this.volume = volume;
+            };
+        };
+
+        let remote = new Remote(1, 'samsung');
+        let tv = new Tivi('Schannel', 10);
+        tv.turnOn();
+        // alert(tv.volume);
+        tv.checkTV();
+    </script>
+</body>
+</html>
