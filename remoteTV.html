@@ -53,16 +53,26 @@
                 return this.channel = channel;
             };
 
-            this.setVolume = function(volume) {
-                return this.volume = volume;
+            this.creaseVolume = function(volume) {
+                if(this.volume < 100) {
+                    this.volume += 2;
+                    alert('Âm lượng: ' +this.volume);
+                }
             };
         };
 
         let remote = new Remote(1, 'samsung');
-        let tv = new Tivi('Schannel', 10);
-        tv.turnOn();
-        // alert(tv.volume);
-        tv.checkTV();
+        let samsung = new Tivi('Schannel', 10);
+        samsung.turnOn();
+        samsung.checkTV();
+        samsung.setChannel(7);
+        alert('Đang bật kênh: ' + samsung.getChannel()) ;
+        samsung.setChannel(3);
+        alert('Đang bật kênh: ' + samsung.getChannel()) ;
+        samsung.creaseVolume();
+        samsung.turnOff();
+        samsung.checkTV();
+
     </script>
 </body>
 </html>
